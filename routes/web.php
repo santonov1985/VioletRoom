@@ -25,6 +25,10 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
 
     Route::group(['prefix' => 'admin'], function () {
+
+        //Logout
+        Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
         Route::get('/', [AdminController::class, 'index'])->name('admin-index');
 
         //PAGES ROUTES
