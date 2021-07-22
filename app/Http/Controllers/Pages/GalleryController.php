@@ -5,6 +5,6 @@ namespace App\Http\Controllers\Pages;
 class GalleryController
 {
     public function index() {
-        return "Gallery Page";
+        return view('admin.pages.gallery.index');
     }
 }

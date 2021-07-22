@@ -5,6 +5,6 @@ namespace App\Http\Controllers\Pages;
 class StockController
 {
     public function index() {
-        return "Stock Page";
+        return view('admin.pages.stock.index');
     }
 }

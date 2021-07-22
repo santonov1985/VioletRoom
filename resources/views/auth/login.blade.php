@@ -11,7 +11,7 @@
                                 @csrf
 
                                 <h1>Вход</h1>
-                                <p class="text-muted">Для работы в системе, вам необходимо войти используя ваш логин и пароль</p>
+                                <p class="text-muted">Для работы с панелью администратора, вам необходимо войти используя ваш логин и пароль</p>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -52,7 +52,7 @@
                         <div class="card-body text-center">
                             <div class="text-dark">
                                 <p>
-                                    <img style="width: 180px" src="{{ asset('/img/img_transparent-white.png') }}" alt="SilkWayVentures">
+                                    <a href="{{ route('home') }}"><img style="width: 180px" src="{{ asset('/img/img_transparent-white.png') }}" alt="VioletRooms"></a>
                                 </p>
                             </div>
                         </div>
