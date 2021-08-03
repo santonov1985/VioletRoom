@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIndexPagesTable extends Migration
+class CreateMainTapesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateIndexPagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('index_pages', function (Blueprint $table) {
+        Schema::create('main_tapes', function (Blueprint $table) {
             $table->id();
+            $table->string('img');
             $table->string('title');
+            $table->string('description_min');
+            $table->string('description_max');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateIndexPagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('index_pages');
+        Schema::dropIfExists('main_tapes');
     }
 }

@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Pages\MainPageController;
+use App\Http\Controllers\Pages\StockController;
+use App\Http\Controllers\Pages\CinemaController;
+use App\Http\Controllers\Pages\ServiceController;
+use App\Http\Controllers\Pages\GalleryController;
+use App\Http\Controllers\Pages\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,17 +39,25 @@ Route::middleware('auth')->group(function () {
 
         //PAGES ROUTES
             //MAIN-PAGE
-        Route::get('/main-page', [\App\Http\Controllers\Pages\MainPageController::class, 'index'])->name('main-index');
+        Route::group(['prefix' => 'main-page'], function ()
+        {
+            Route::get('/', [MainPageController::class, 'index'])->name('main-index');
+            Route::get('/title-edit/{id}', [MainPageController::class, 'mainIndexTitleEdit'])->name('main-index-title-edit');
+            Route::post('/title-update/{id}', [MainPageController::class, 'updateTitle'])->name('main-index-title-update');
+            Route::get('create-slider', [MainPageController::class, 'createSlider'])->name('main-index-create-slider');
+            Route::post('create-slider', [MainPageController::class, 'storeSlider'])->name('main-index-store-slider');
+        });
+
             //STOCK-PAGE
-        Route::get('/stock-page', [\App\Http\Controllers\Pages\StockController::class, 'index'])->name('stock-index');
+        Route::get('/stock-page', [StockController::class, 'index'])->name('stock-index');
             //CINEMA-PAGE
-        Route::get('/cinema-page', [\App\Http\Controllers\Pages\CinemaController::class, 'index'])->name('cinema-index');
+        Route::get('/cinema-page', [CinemaController::class, 'index'])->name('cinema-index');
         //SERVICES-PAGE
-        Route::get('/services-page', [\App\Http\Controllers\Pages\ServiceController::class, 'index'])->name('service-index');
+        Route::get('/services-page', [ServiceController::class, 'index'])->name('service-index');
         //GALLERIES-PAGE
-        Route::get('/gallery-page', [\App\Http\Controllers\Pages\GalleryController::class, 'index'])->name('gallery-index');
+        Route::get('/gallery-page', [GalleryController::class, 'index'])->name('gallery-index');
         //CONTACTS-PAGE
-        Route::get('/contact-page', [\App\Http\Controllers\Pages\ContactController::class, 'index'])->name('contact-index');
+        Route::get('/contact-page', [ContactController::class, 'index'])->name('contact-index');
     });
 
     //ACL
